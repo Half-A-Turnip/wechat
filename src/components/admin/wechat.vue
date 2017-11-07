@@ -33,7 +33,7 @@ export default {
   .phoneBox
     flex 0 0 500px
     box-sizing border-box
-    padding 0  50px
+    padding 0  30px
     border-right 1px solid #dedede
     display flex
     justify-content center
