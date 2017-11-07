@@ -1,0 +1,2 @@
+// 常量
+export const SET_MOBILE_CHOOSE = 'SET_MOBILE_CHOOSE'
