@@ -8,15 +8,18 @@
       </el-select>
     </div>
     <div class="phoneShow">
-      <div class="phoneContainer" :style="{ width: myPhone.width + 'px' , height:myPhone.height + 'px' }"></div>
+      <div class="phoneContainer" :style="{ width: myPhone.width + 'px' , height:myPhone.height + 'px' }" ref="phoneShow">
+        <img src="../../assets/images/error.svg" alt="">
+        fjhghjgjhghjgjhg
+      </div>
     </div>
     <div class="phoneOperate">
-      <el-button type="primary">保存本地</el-button>
-      <el-button type="primary">其他操作</el-button>
+      <el-button type="primary" @click="look">保存到本地</el-button>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
+import html2canvas from 'html2canvas'
 import { phoneType } from '../../assets/data/phoneType'
 import { mapGetters } from 'vuex'
 import { getObjByClassName } from '../../assets/js/utils'
@@ -44,6 +47,15 @@ export default {
   },
   mounted () {
     console.log(this.myPhone)
+  },
+  methods: {
+    look () {
+      html2canvas(this.$refs.phoneShow).then((canvas) => {
+        let imgUri = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+        console.log(imgUri)
+        window.location.href = imgUri
+      })
+    }
   }
 }
 </script>
@@ -67,6 +79,7 @@ export default {
     align-items center
     justify-content center
     .phoneContainer
+      background #fff
       border 1px solid #dedede
   .phoneOperate
     flex 0 0 80px
